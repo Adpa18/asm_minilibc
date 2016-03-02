@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int main(int argc, char *argv[])
+int main()
 {
   printf("%s\n", strchr("azertyuiop", 'a'));
   printf("%s\n", strchr("azertyuiop", 'z'));
@@ -14,8 +14,6 @@ int main(int argc, char *argv[])
   printf("%s\n", strchr("azertyuiop", 'i'));
   printf("%s\n", strchr("azertyuiop", 'o'));
   printf("%s\n", strchr("azertyuiop", 'p'));
-
-
 
   printf("%p\n", strchr("azertyu", 'p'));
   printf("%p\n", strchr("", 'p'));
