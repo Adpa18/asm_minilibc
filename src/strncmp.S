@@ -9,11 +9,13 @@ strncmp:
     je end          ; if n == 0
 
 loop_s:
-    cmp rdi, rsi
+    mov r8b, [rdi]
+    mov r9b, [rsi]
+    cmp r8b, r9b
     jne loop_end    ; if s1[i] != s2[i] loop_end
-    cmp rdi, 0
+    cmp r8b, 0
     je loop_end     ; if s1[i] == 0
-    cmp rsi, 0
+    cmp r9b, 0
     je loop_end     ; if s2[i] == 0
     inc rdi
     inc rsi
@@ -23,8 +25,8 @@ loop_s:
     jmp loop_s
 
 loop_end:
-    sub rdi, rsi
-    mov rax, rdi    ; return count
+    sub r8b, r9b
+    movsx rax, r8b    ; return count
 
 end:
     ret 0
