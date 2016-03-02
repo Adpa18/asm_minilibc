@@ -4,11 +4,9 @@
 section .text
 
 strncmp:
-    push rbp        ; prologue
-    mov rsp, rbp
-    xor rax, rax    ; init rcx = 0
+    xor rax, rax    ; init rax = 0
     cmp rdx, 0
-    je end
+    je end          ; if n == 0
 
 loop_s:
     cmp rdi, rsi
@@ -21,7 +19,7 @@ loop_s:
     inc rsi
     dec rdx
     cmp rdx, 0
-    je loop_end
+    je loop_end     ; if n = 0
     jmp loop_s
 
 loop_end:
@@ -29,6 +27,4 @@ loop_end:
     mov rax, rdi    ; return count
 
 end:
-    mov rbp, rsp    ; epilogue
-    pop rbp
     ret 0

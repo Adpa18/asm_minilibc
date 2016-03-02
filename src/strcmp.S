@@ -4,9 +4,7 @@
 section .text
 
 strcmp:
-    push rbp        ; prologue
-    mov rsp, rbp
-    xor rax, rax    ; init rcx = 0
+    xor rax, rax    ; init rax = 0
 
 loop_s:
     cmp rdi, rsi
@@ -22,6 +20,4 @@ loop_s:
 loop_end:
     sub rdi, rsi
     mov rax, rdi    ; return count
-    mov rbp, rsp    ; epilogue
-    pop rbp
     ret 0

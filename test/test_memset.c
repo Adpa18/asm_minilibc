@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int	main(int argc, char *argv[])
+int	main()
 {
   char tmp[] = "tsm";
   int tmpin[3] = {6, 6, 6};
