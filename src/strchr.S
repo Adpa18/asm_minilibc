@@ -7,7 +7,10 @@ strchr:
     xor rax, rax    ; init rax = 0
 
 loop_s:
-    cmp rdi, rsi
+    mov al, [rdi]
+    cmp al, sil     ; 8bits register of rsi
+    je loop_end
+    cmp al, 0
     je loop_end
     inc rdi
     jmp loop_s
