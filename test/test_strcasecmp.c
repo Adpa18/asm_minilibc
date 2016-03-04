@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int main(int argc, char *argv[])
+int main()
 {
   printf("coucou | coUAcou = %d\n", strcasecmp(strdup("coucou"), strdup("coUAou")));
   printf("coucou | COUCOU = %d\n", strcasecmp(strdup("coucou"), strdup("COUCOU")));

@@ -5,6 +5,8 @@ section .text
 
 strlen:
     xor rcx, rcx    ; init rcx = 0
+    cmp rdi, 0
+    je loop_end
 
 loop_s:
     mov al, [rdi]

@@ -5,6 +5,8 @@ section .text
 
 strchr:
     xor rax, rax    ; init rax = 0
+    cmp rdi, 0
+    je loop_end
 
 loop_s:
     mov al, [rdi]
