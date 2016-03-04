@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int main(int argc, char *argv[])
+int main()
 {
   printf("%s\n", strstr("toto", "t"));
   printf("%s\n", strstr("toto", "o"));
