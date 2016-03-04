@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 
-int main(int argc, char *argv[])
+int main()
 {
   printf("toto => %s\n", strpbrk("toto", "t"));
   printf("toto => %s\n", strpbrk("toto", "o"));
