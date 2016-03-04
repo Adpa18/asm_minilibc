@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int main(int argc, char *argv[])
+int main()
 {
   printf("toto => %d\n", strcspn("toto", "t"));
   printf("toto => %d\n", strcspn("toto", "o"));
