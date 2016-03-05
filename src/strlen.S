@@ -9,10 +9,9 @@ strlen:
     je loop_end
 
 loop_s:
-    mov al, [rdi]
+    mov al, [rdi + rcx]
     cmp al, 0
     je loop_end     ; if s[i] == 0 loop_end
-    inc rdi
     inc rcx
     jmp loop_s
 

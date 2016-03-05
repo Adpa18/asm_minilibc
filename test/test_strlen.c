@@ -4,12 +4,25 @@
 
 int	main()
 {
-    printf("%lu\t%d\n", strlen("toto"), 4);
-    printf("%lu\t%d\n", strlen(""), 0);
-    printf("%lu\t%d\n", strlen(NULL), 0);
-    printf("%lu\t%d\n", strlen("aaaaaaaaaaaaaaaaaaaaaaa"), 23);
-    printf("%lu\t%d\n", strlen("aaa"), 3);
-    printf("%lu\t%d\n", strlen("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"), 56);
-    printf("%lu\t%d\n", strlen("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"), 80);
-    return 0;
+  char	*str;
+
+  str = strdup("toto");
+  printf ("str => %s | %d\n", str, strlen(str));
+  free(str);
+  str = strdup("");
+  printf ("str => %s | %d\n", str, strlen(str));
+  free(str);
+  str = strdup("aaaaaaaaaaaaaaaaaaaaaaa");
+  printf ("str => %s | %d\n", str, strlen(str));
+  free(str);
+  str = strdup("aaa");
+  printf ("str => %s | %d\n", str, strlen(str));
+  free(str);
+  str = strdup("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+  printf ("str => %s | %d\n", str, strlen(str));
+  free(str);
+  str = strdup("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+  printf ("str => %s | %d\n", str, strlen(str));
+  free(str);
+  return 0;
 }

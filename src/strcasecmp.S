@@ -7,20 +7,20 @@ strcasecmp:
     xor rax, rax    ; init rax = 0
 
 loop_s:
-    mov al, [rdi]
-    mov r9b, [rsi]
+    mov al, [rdi]   ; mov char1
+    mov r9b, [rsi]  ; mov char2
     ;lowers1
-    cmp al, 64
+    cmp al, 64      ; if < 'A'
     jl lowers2
-    cmp al, 90
+    cmp al, 90      ; if > 'Z'
     jg lowers2
-    add al, 32
+    add al, 32      ; then add 32
 lowers2:
-    cmp r9b, 64
+    cmp r9b, 64     ; if < 'A'
     jl compare
-    cmp r9b, 90
+    cmp r9b, 90     ; if > 'Z'
     jg compare
-    add r9b, 32
+    add r9b, 32     ; then add 32
 compare:
     cmp al, r9b
     jne loop_end    ; if s1[i] != s2[i] loop_end
@@ -34,5 +34,4 @@ compare:
 
 loop_end:
     sub rax, r9
-    ;movsx rax, al    ; return count
     ret 0

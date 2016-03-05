@@ -15,6 +15,8 @@ int main()
   printf("%s\n", strchr("azertyuiop", 'o'));
   printf("%s\n", strchr("azertyuiop", 'p'));
 
+
+
   printf("%p\n", strchr("azertyu", 'p'));
   printf("%p\n", strchr("", 'p'));
   printf("%s\n", strchr("adrien", 'a'));

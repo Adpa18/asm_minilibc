@@ -9,9 +9,7 @@ memset:
 loop_s:
     cmp rcx, rdx
     je loop_end
-    ;cmp [rdi + rcx], 0
-    ;je loop_end
-    mov [rdi + rcx], rsi
+    mov [rdi + rcx], sil
     inc rcx
     jmp loop_s
 

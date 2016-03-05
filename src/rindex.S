@@ -5,35 +5,35 @@
 section .text
 
 rindex:
-    mov r8b, [rdi]
-    cmp r8b, 0
+    mov al, [rdi]
+    cmp al, 0       ; if first char == 0
     je error
-    push rdi
-    push rsi
+    push rdi        ; save first argv
+    push rsi        ; save second arv
     call strlen WRT ..plt   ;To call an external routine, you must use another special PIC relocation type, WRT ..plt
-    mov rcx, rax
+    mov rcx, rax    ; mov len
     dec rcx
-    pop rsi
-    pop rdi
+    pop rsi         ; restore second argv
+    pop rdi         ; restore first argv
 
 loop_s:
-    mov r8b, [rdi + rcx]
-    cmp r8b, sil     ; 8bits register of rsi
+    mov al, [rdi + rcx] ; mov current char
+    cmp al, sil     ; 8bits register of rsi
     je loop_end
-    cmp rcx, 0
+    cmp rcx, 0      ; end
     je error
-    cmp r8b, 0
+    cmp al, 0       ; error
     je error
     dec rcx
     jmp loop_s
 
 error:
-    mov rdi, 0
+    mov rax, 0
     jmp end
 
 loop_end:
     add rdi, rcx
+    mov rax, rdi    ; return ptr
 
 end:
-    mov rax, rdi    ; return ptr
     ret 0
