@@ -5,7 +5,7 @@
 ** Login	wery_a
 **
 ** Started on	Sun Mar 06 16:02:27 2016 Adrien WERY
-** Last update	Sun Mar 06 18:15:04 2016 Adrien WERY
+** Last update	Sun Mar 06 20:53:05 2016 Nicolas Constanty
 */
 
 #ifndef SYS_H_
@@ -42,9 +42,9 @@ typedef unsigned int uint;
 
 typedef struct	s_vector3
 {
-  double	x;
-  double	y;
-  double	z;
+  int	x;
+  int	y;
+  int	z;
 }		         t_vector3;
 
 typedef struct	s_obj

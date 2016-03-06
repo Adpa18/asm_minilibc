@@ -5,7 +5,7 @@
 ** Login	wery_a
 **
 ** Started on	Sun Mar 06 14:51:09 2016 Adrien WERY
-** Last update	Sun Mar 06 19:24:39 2016 Adrien WERY
+** Last update	Sun Mar 06 23:09:49 2016 Nicolas Constanty
 */
 
 #include "sys.h"
@@ -55,9 +55,12 @@ int main()
     img = malloc(FULL_BYTE_SIZE);
     while (--i)
         {
-            vecs.x = SIZE_F / 2 - i % SIZE;
-            vecs.y = SIZE_F / 2 - i / SIZE;
-            vecs.z = SIZE_F / 0.46630765815;
+            vecs.x = (SIZE_F / 2) - i % SIZE;
+            vecs.y = (SIZE_F / 2) - i / SIZE;
+            printf("i = %d x = %d\n", i, vecs.x);
+            printf("i = %d y = %d\n", i, vecs.y);
+            // vecs.z = SIZE_F / 0.46630765815;
+            vecs.z = 2144;
             img[i] = calc_color(vecs);
         }
     write(1, "\n", 1);
