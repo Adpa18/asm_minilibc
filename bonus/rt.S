@@ -33,35 +33,41 @@ loop_s:
     je      end
 calc_color:
     ; init vecs
-    mov     r8, 500     ;vecsX
-    mov     r9, 500     ;vecsY
-    mov     r10, 2144   ;vecsZ
+    mov     r8d, 500     ;vecsX
+    mov     r9d, 500     ;vecsY
+    mov     r10d, 2144   ;vecsZ
     push    rbx
     push    rdx
-    xor     rdx, rdx
-    mov     rax, rcx
-    mov     rbx, rsi
-    idiv    rbx         ; qot = rax && ret = rdx
-    sub     r8, rdx     ; final vecsX
-    sub     r9, rax     ; final vecsY
+    xor     edx, edx
+    mov     eax, ecx
+    mov     ebx, esi
+    idiv    ebx         ; qot = rax && ret = rdx
+    sub     r8d, edx     ; final vecsX
+    sub     r9d, eax     ; final vecsY
     xor     eax, eax
     pop     rdx
     pop     rbx
     push    rbx
 
 loop_objs:
-    cmp     rbx, 0
+    cmp     ebx, 0
     je      put_color
-    sub     rbx, 20
+    sub     ebx, 20
+    push    r8
+    push    r9
+    push    r10
+    sub     r8d, [rdx + rbx]
+    sub     r9d, [rdx + rbx + 4]
+    sub     r10d, [rdx + rbx + 8]
     ;a[0] = vecs.x * vecs.x + vecs.y * vecs.y + vecs.z * vecs.z;
-    mov     r11, r8
-    imul    r11, r11
-    mov     r12, r9
-    imul    r12, r12
-    mov     r13, r10
-    imul    r13, r13
-    add     r11, r12
-    add     r11, r13
+    mov     r11d, r8d
+    imul    r11d, r11d
+    mov     r12d, r9d
+    imul    r12d, r12d
+    mov     r13d, r10d
+    imul    r13d, r13d
+    add     r11d, r12d
+    add     r11d, r13d
     ;a[1] = 2.0 * (CAMPX * vecs.x + CAMPY * vecs.y + CAMPZ * vecs.z);
     mov     r12, campx
     imul    r12, r8
@@ -73,7 +79,7 @@ loop_objs:
     add     r12, r14
     imul    r12, 2
     ;a[2] = CAMPX * CAMPX + CAMPY * CAMPY + CAMPZ * CAMPZ - obj.r * obj.r;
-    mov     r13, total_cam
+    mov     r13d, total_cam
     mov     r14d, dword [rdx + rbx + 12]
     imul    r14d, r14d
     sub     r13d, r14d
@@ -84,6 +90,9 @@ loop_objs:
     imul    r15, r11
     imul    r15, r13
     sub     r14, r15
+    pop     r10
+    pop     r9
+    pop     r8
     cmp     r14, 0
     jl      loop_objs
     mov     eax, [rdx + rbx + 16]

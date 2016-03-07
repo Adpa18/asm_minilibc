@@ -5,7 +5,7 @@
 ** Login	wery_a
 **
 ** Started on	Sun Mar 06 17:59:04 2016 Adrien WERY
-** Last update	Mon Mar 07 11:28:42 2016 Adrien WERY
+** Last update	Mon Mar 07 11:41:44 2016 Adrien WERY
 */
 
 # include "sys.h"
@@ -29,7 +29,7 @@ int main()
     uint        *img;
     int         fd = makeBMP();
     t_obj       objs[2] = {
-        {0, 0, 0, 50, 0xFF00FF00},
+        {100, 0, 0, 50, 0xFF00FF00},
         {0, 0, 0, 100, 0xFFC3CF00},
     };
 
