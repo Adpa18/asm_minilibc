@@ -5,7 +5,7 @@
 ** Login	wery_a
 **
 ** Started on	Sun Mar 06 16:02:27 2016 Adrien WERY
-** Last update	Sun Mar 06 20:53:05 2016 Nicolas Constanty
+** Last update	Mon Mar 07 10:05:06 2016 Adrien WERY
 */
 
 #ifndef SYS_H_
@@ -49,7 +49,9 @@ typedef struct	s_vector3
 
 typedef struct	s_obj
 {
-    t_vector3   pos;
+    int         posx;
+    int	        posy;
+    int	        posz;
     uint        r;
     uint        color;
 }		         t_obj;
@@ -75,6 +77,6 @@ typedef struct	s_obj
 # define SRA 100
 # define SCOLOR 0xFF00FF00
 
-void    rt(void *img, uint size);
+void    rt(void *img, uint size, void *objs, uint nb_objs);
 
 #endif /* !SYS_H_ */
