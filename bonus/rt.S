@@ -9,12 +9,6 @@ section .data
     campy:      equ 0
     campz:      equ -512
     total_cam   equ 262144
-    spx:        equ 0
-    spy:        equ 0
-    spz:        equ 0
-    spr:        equ 100
-    spr_pow:    equ 10000
-    spcolor:    equ 0xFFF34F00
     LC0:      db	"%d", 10, 0
 section .text
 rt:
@@ -53,12 +47,12 @@ loop_objs:
     cmp     ebx, 0
     je      put_color
     sub     ebx, 20
-    push    r8
-    push    r9
-    push    r10
-    sub     r8d, [rdx + rbx]
-    sub     r9d, [rdx + rbx + 4]
-    sub     r10d, [rdx + rbx + 8]
+    push    r8                      ;save vecsX before translate
+    push    r9                      ;save vecsY before translate
+    push    r10                     ;save vecsZ before translate
+    sub     r8d, [rdx + rbx]        ;translate vecsX
+    sub     r9d, [rdx + rbx + 4]    ;translate vecsY
+    sub     r10d, [rdx + rbx + 8]   ;translate vecsZ
     ;a[0] = vecs.x * vecs.x + vecs.y * vecs.y + vecs.z * vecs.z;
     mov     r11d, r8d
     imul    r11d, r11d
@@ -94,6 +88,7 @@ loop_objs:
     pop     r9
     pop     r8
     cmp     r14, 0
+    ; no need r11, r12, r13, r14, r15
     jl      loop_objs
     mov     eax, [rdx + rbx + 16]
     jmp     loop_objs

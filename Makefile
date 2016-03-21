@@ -22,34 +22,22 @@ LDFLAGS	=	-shared
 
 SRCDIR	=	src/
 
-OBJDIR	=	obj/
+SRC		=	$(SRCDIR)memcpy.S		\
+			$(SRCDIR)memmove.S		\
+			$(SRCDIR)memset.S		\
+			$(SRCDIR)rindex.S		\
+			$(SRCDIR)strcasecmp.S	\
+			$(SRCDIR)strchr.S		\
+			$(SRCDIR)strcmp.S		\
+			$(SRCDIR)strcspn.S		\
+			$(SRCDIR)strlen.S		\
+			$(SRCDIR)strncmp.S		\
+			$(SRCDIR)strpbrk.S		\
+			$(SRCDIR)strstr.S		\
 
-SRC		=	memcpy.S		\
-			memmove.S		\
-			memset.S		\
-			rindex.S		\
-			strcasecmp.S	\
-			strchr.S		\
-			strcmp.S		\
-			strcspn.S		\
-			strlen.S		\
-			strncmp.S		\
-			strpbrk.S		\
-			strstr.S		\
+OBJ		=	$(SRC:.S=.o)
 
-
-			# strcat.S \
-			# strdup.S \
-			# strncat.S \
-			# strcpy.S \
-			# strncpy.S \
-			# memchr.S \
-			# fabs.S \
-			# memcmp.S
-
-OBJ		=	$(patsubst %.S,${OBJDIR}%.o, $(SRC))
-
-$(OBJDIR)%.o	:	$(patsubst %.S,${SRCDIR}%.S, %.S)
+%.o	:	%.S
 	$(ASM) $(ASFLAGS) $< -o $@
 
 $(NAME)	: $(OBJ)
@@ -59,7 +47,6 @@ all		: $(NAME)
 
 clean 	:
 	$(RM) $(OBJ)
-	mkdir -p $(OBJDIR)
 
 fclean	: clean
 	$(RM) $(NAME)

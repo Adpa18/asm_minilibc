@@ -1,5 +1,4 @@
 *.o
-libasm.so
 a.out
 *.diff
 *.log

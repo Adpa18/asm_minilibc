@@ -1,0 +1,11 @@
+gdb -tui a.out
+set disassembly-flavor intel
+disassemble [label|function]
+break [label|function]
+layout asm
+run
+display $[register]
+ni //next instruction
+s //step
+x/s $[register] //afficher la chaine de caractère à l'adresse du registre
+x/x $[register] //afficher la valeur en hexa du registre
