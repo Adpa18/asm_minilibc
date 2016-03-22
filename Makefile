@@ -18,9 +18,11 @@ NAME	=	libasm.so
 
 ASFLAGS	=	-f elf64
 
-LDFLAGS	=	-shared
+LDFLAGS	=	-rdynamic -shared
 
 SRCDIR	=	src/
+
+CFLAGS	=	-fPIC
 
 SRC		=	$(SRCDIR)memcpy.S		\
 			$(SRCDIR)memmove.S		\
@@ -37,11 +39,11 @@ SRC		=	$(SRCDIR)memcpy.S		\
 
 OBJ		=	$(SRC:.S=.o)
 
-%.o	:	%.S
-	$(ASM) $(ASFLAGS) $< -o $@
-
 $(NAME)	: $(OBJ)
 	$(CC) $(OBJ) -o $(NAME) $(LDFLAGS)
+
+%.o	:	%.S
+	$(ASM) $(ASFLAGS) $< -o $@
 
 all		: $(NAME)
 
