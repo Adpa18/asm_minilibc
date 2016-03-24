@@ -4,7 +4,8 @@
 section .text
 
 memset:
-    push    rcx
+    push    rbp
+    mov     rbp, rsp
     xor     rcx, rcx    ; init rcx = 0
 
 loop_s:
@@ -15,6 +16,7 @@ loop_s:
     jmp     loop_s
 
 loop_end:
+    mov     rsp, rbp
+    pop     rbp
     mov     rax, rdi    ; return ptr
-    pop     rcx
     ret     0

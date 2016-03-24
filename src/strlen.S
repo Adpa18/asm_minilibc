@@ -4,7 +4,8 @@
 section .text
 
 strlen:
-    push    rcx
+    push    rbp
+    mov     rbp, rsp
     xor     rcx, rcx    ; init rcx = 0
     cmp     rdi, 0
     je      loop_end
@@ -17,6 +18,7 @@ loop_s:
     jmp     loop_s
 
 loop_end:
+    mov     rsp, rbp
+    pop     rbp
     mov     rax, rcx    ; return count
-    pop     rcx
     ret 0

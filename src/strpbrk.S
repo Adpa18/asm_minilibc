@@ -4,9 +4,8 @@
 section .text
 
 strpbrk:
-    push    rdi
-    push    r8
-    push    r9
+    push    rbp
+    mov     rbp, rsp
     xor     rax, rax    ; init rax = 0
     cmp     rdi, 0      ; if s1 == NULL
     je      end
@@ -31,7 +30,6 @@ loop_s2:
 loop_end:
     mov     rax, rdi    ; return ptr
 end:
-    pop     r9
-    pop     r8
-    pop     rdi
+    mov     rsp, rbp
+    pop     rbp
     ret     0

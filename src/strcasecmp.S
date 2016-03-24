@@ -4,10 +4,8 @@
 section .text
 
 strcasecmp:
-    push    rdi
-    push    rsi
-    push    r8
-    push    r9
+    push    rbp
+    mov     rbp, rsp
     xor     rax, rax    ; init rax = 0
 
 loop_s:
@@ -39,8 +37,6 @@ compare:
 loop_end:
     sub     r8b, r9b
     movsx   rax, r8b    ; return count
-    pop     r9
-    pop     r8
-    pop     rsi
-    pop     rdi
+    mov     rsp, rbp
+    pop     rbp
     ret 0

@@ -4,7 +4,8 @@
 section .text
 
 strchr:
-    push    rdi
+    push    rbp
+    mov     rbp, rsp
     xor     rax, rax    ; init rax = 0
     cmp     rdi, 0
     je      error
@@ -26,5 +27,6 @@ loop_end:
     mov rax, rdi    ; return ptr
 
 end:
-    pop     rdi
+    mov     rsp, rbp
+    pop     rbp
     ret     0

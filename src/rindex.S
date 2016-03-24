@@ -5,7 +5,8 @@
 section .text
 
 rindex:
-    push    rcx
+    push    rbp
+    mov     rbp, rsp
     mov     al, [rdi]
     cmp     al, 0       ; if first char == 0
     je      error
@@ -37,5 +38,6 @@ loop_end:
     mov     rax, rdi    ; return ptr
 
 end:
-    pop     rcx
+    mov     rsp, rbp
+    pop     rbp
     ret     0

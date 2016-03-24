@@ -4,9 +4,8 @@
 section .text
 
 strcspn:
-    push    rcx
-    push    r8
-    push    r9
+    push    rbp
+    mov     rbp, rsp
     xor     rcx, rcx    ; init rcx = 0
     cmp     rdi, 0      ; if s1 == NULL
     je      end
@@ -31,7 +30,6 @@ loop_s2:
 loop_end:
     mov     rax, rcx    ; return pos
 end:
-    pop     r9
-    pop     r8
-    pop     rcx
+    mov     rsp, rbp
+    pop     rbp
     ret     0

@@ -4,11 +4,8 @@
 section .text
 
 strncmp:
-    push    rdi
-    push    rsi
-    push    rdx
-    push    r8
-    push    r9
+    push    rbp
+    mov     rbp, rsp
     xor rax, rax    ; init rax = 0
     cmp rdx, 0
     je end          ; if n == 0
@@ -34,9 +31,6 @@ loop_end:
     movsx   rax, r8b    ; return count
 
 end:
-    pop     r9
-    pop     r8
-    pop     rdx
-    pop     rsi
-    pop     rdi
+    mov     rsp, rbp
+    pop     rbp
     ret 0

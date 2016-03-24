@@ -4,9 +4,8 @@
 section .text
 
 memmove:
-    push    rcx
-    push    rdx
-    push    r8
+    push    rbp
+    mov     rbp, rsp
     cmp     rdi, rsi
     je      loop_end
     cmp     rdi, 0      ; check if NULL
@@ -34,8 +33,7 @@ loop_reverse:
     jmp     loop_reverse
 
 loop_end:
+    mov     rsp, rbp
+    pop     rbp
     mov     rax, rdi    ; return count
-    pop     r8
-    pop     rdx
-    pop     rcx
     ret     0
