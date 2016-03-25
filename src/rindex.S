@@ -10,15 +10,16 @@ rindex:
     mov     al, [rdi]
     cmp     al, 0       ; if first char == 0
     je      error
-    push    rdi        ; save first argv
-    push    rsi        ; save second arv
-    call    strlen WRT ..plt   ;To call an external routine, you must use another special PIC relocation type, WRT ..plt
-    mov     rcx, rax    ; mov len
-    dec     rcx
-    pop     rsi         ; restore second argv
-    pop     rdi         ; restore first argv
+    xor     rcx, rcx
+len:
+    mov     al, [rdi + rcx] ; mov current char
+    cmp     al, 0
+    je      loop_s
+    inc     rcx
+    jmp     len
 
 loop_s:
+    dec     rcx
     mov     al, [rdi + rcx] ; mov current char
     cmp     al, sil     ; 8bits register of rsi
     je      loop_end
@@ -26,7 +27,6 @@ loop_s:
     je      error
     cmp     al, 0       ; error
     je      error
-    dec     rcx
     jmp     loop_s
 
 error:

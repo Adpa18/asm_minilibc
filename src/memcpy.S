@@ -15,9 +15,6 @@ memcpy:
 loop_s:
     cmp     rcx, rdx    ; check if i < size
     je      loop_end
-    mov     al, [rdi + rcx]
-    cmp     al, 0      ; check if end
-    je      loop_end
     mov     r8b, [rsi + rcx]
     cmp     r8b, 0      ; check if end
     je      loop_end
